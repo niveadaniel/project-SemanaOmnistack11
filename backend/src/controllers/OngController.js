@@ -12,22 +12,22 @@ module.exports = {
         const {name, email, whatsapp, city, uf} = request.body;
         const id = crypto.randomBytes(4).toString('HEX');
 
-        // await connection('ongs').insert({
-        //     id, 
-        //     name,
-        //     email,
-        //     whatsapp,
-        //     city,
-        //     uf,
-        // });
+        await connection('ongs').insert({
+            id, 
+            name,
+            email,
+            whatsapp,
+            city,
+            uf,
+        });
 
-        return response.json(id);
+        return response.json({ id });
     },
 
     async delete(request, response){
         const{id} = request.params;
 
-        //await connection('ongs').where('id', id).delete();
+        await connection('ongs').where('id', id).delete();
 
         return response.status(204).send();
     }
